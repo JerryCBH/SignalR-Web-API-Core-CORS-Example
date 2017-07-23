@@ -1,9 +1,18 @@
 # SignalR-Web-API-Core-CORS-Example
+
 Example of using SignalR 2 with ASPNET Web API Core with SignalR clients in different domains.
 
 The web api core runs at port 35679 and hosts the SignalR and JQuery scripts.
 
 The client is a Vue JS component in a HTML page. Multiple copies of the client can be hosted at different ports or domain to test the CORS SignalR connection.
+
+
+### Usage
+
+Host the client html page at different ports and run the web api core project in VS 2017. From the client, type in a message and see it gets broadcasted to the other clients at different port.
+
+
+### How the example project was made
 
 1. Configure Web API project to support CORS and Signalr. Good reference: https://cmatskas.com/signalr-cross-domain-with-cors/
 
@@ -13,12 +22,16 @@ The client is a Vue JS component in a HTML page. Multiple copies of the client c
 
 4. In the Javascript client, include the script tags to point back to our server:
 
+
+~~~~
 <script src="http://localhost:35679/jquery.js" ></script>
-       
+
 <script src="http://localhost:35679/jquery.signalR-2.2.2.min.js"></script>
       
 <script src="http://localhost:35679/signalr/hubs"></script>
+~~~~
 
 
 5. In the client startup code, remember to point hub Url back to our server:
-$.connection.hub.url = 'http://localhost:35679/signalr';
+
+`$.connection.hub.url = 'http://localhost:35679/signalr';`
